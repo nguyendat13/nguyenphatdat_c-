@@ -1,0 +1,17 @@
+D:\c#\Quanlyview\Quanlyview\bin\Debug\net8.0-windows\Quanlyview.exe
+D:\c#\Quanlyview\Quanlyview\bin\Debug\net8.0-windows\Quanlyview.deps.json
+D:\c#\Quanlyview\Quanlyview\bin\Debug\net8.0-windows\Quanlyview.runtimeconfig.json
+D:\c#\Quanlyview\Quanlyview\bin\Debug\net8.0-windows\Quanlyview.dll
+D:\c#\Quanlyview\Quanlyview\bin\Debug\net8.0-windows\Quanlyview.pdb
+D:\c#\Quanlyview\Quanlyview\obj\Debug\net8.0-windows\Quanlyview.Form1.resources
+D:\c#\Quanlyview\Quanlyview\obj\Debug\net8.0-windows\Quanlyview.Quanly.resources
+D:\c#\Quanlyview\Quanlyview\obj\Debug\net8.0-windows\Quanlyview.csproj.GenerateResource.cache
+D:\c#\Quanlyview\Quanlyview\obj\Debug\net8.0-windows\Quanlyview.GeneratedMSBuildEditorConfig.editorconfig
+D:\c#\Quanlyview\Quanlyview\obj\Debug\net8.0-windows\Quanlyview.AssemblyInfoInputs.cache
+D:\c#\Quanlyview\Quanlyview\obj\Debug\net8.0-windows\Quanlyview.AssemblyInfo.cs
+D:\c#\Quanlyview\Quanlyview\obj\Debug\net8.0-windows\Quanlyview.csproj.CoreCompileInputs.cache
+D:\c#\Quanlyview\Quanlyview\obj\Debug\net8.0-windows\Quanlyview.dll
+D:\c#\Quanlyview\Quanlyview\obj\Debug\net8.0-windows\refint\Quanlyview.dll
+D:\c#\Quanlyview\Quanlyview\obj\Debug\net8.0-windows\Quanlyview.pdb
+D:\c#\Quanlyview\Quanlyview\obj\Debug\net8.0-windows\Quanlyview.genruntimeconfig.cache
+D:\c#\Quanlyview\Quanlyview\obj\Debug\net8.0-windows\ref\Quanlyview.dll
