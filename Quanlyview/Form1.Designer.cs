@@ -57,6 +57,8 @@
             // 
             // tbTaiKhoan
             // 
+            tbTaiKhoan.BackColor = SystemColors.ScrollBar;
+            tbTaiKhoan.BorderStyle = BorderStyle.FixedSingle;
             tbTaiKhoan.Location = new Point(88, 24);
             tbTaiKhoan.Name = "tbTaiKhoan";
             tbTaiKhoan.Size = new Size(137, 23);
@@ -65,6 +67,8 @@
             // 
             // tbMatKhau
             // 
+            tbMatKhau.BackColor = SystemColors.ScrollBar;
+            tbMatKhau.BorderStyle = BorderStyle.FixedSingle;
             tbMatKhau.Location = new Point(88, 72);
             tbMatKhau.Name = "tbMatKhau";
             tbMatKhau.Size = new Size(137, 23);
@@ -107,6 +111,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.RosyBrown;
             ClientSize = new Size(239, 192);
             Controls.Add(checkBox1);
             Controls.Add(btThoat);

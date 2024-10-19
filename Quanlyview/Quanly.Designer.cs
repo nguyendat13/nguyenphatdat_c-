@@ -59,12 +59,18 @@ namespace Quanlyview
             label9 = new Label();
             groupBox3 = new GroupBox();
             groupBox4 = new GroupBox();
+            lTaiKhoan = new LinkLabel();
+            linkLabel1 = new LinkLabel();
             groupBox5 = new GroupBox();
+            linkLabel4 = new LinkLabel();
+            linkLabel5 = new LinkLabel();
             ((System.ComponentModel.ISupportInitialize)dgvEmployee).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbEmployeeImage).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
+            groupBox4.SuspendLayout();
+            groupBox5.SuspendLayout();
             SuspendLayout();
             // 
             // btThoat
@@ -87,6 +93,7 @@ namespace Quanlyview
             // 
             // dgvEmployee
             // 
+            dgvEmployee.BackgroundColor = Color.IndianRed;
             dgvEmployee.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvEmployee.Location = new Point(212, 295);
             dgvEmployee.Name = "dgvEmployee";
@@ -186,7 +193,7 @@ namespace Quanlyview
             // 
             // tbAddress
             // 
-            tbAddress.Location = new Point(328, 13);
+            tbAddress.Location = new Point(328, 18);
             tbAddress.Name = "tbAddress";
             tbAddress.Size = new Size(210, 23);
             tbAddress.TabIndex = 14;
@@ -194,7 +201,7 @@ namespace Quanlyview
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(265, 77);
+            label6.Location = new Point(265, 82);
             label6.Name = "label6";
             label6.Size = new Size(57, 15);
             label6.TabIndex = 17;
@@ -203,7 +210,7 @@ namespace Quanlyview
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(237, 45);
+            label7.Location = new Point(237, 50);
             label7.Name = "label7";
             label7.Size = new Size(85, 15);
             label7.TabIndex = 18;
@@ -212,7 +219,7 @@ namespace Quanlyview
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(279, 16);
+            label8.Location = new Point(279, 21);
             label8.Name = "label8";
             label8.Size = new Size(43, 15);
             label8.TabIndex = 19;
@@ -222,21 +229,21 @@ namespace Quanlyview
             // 
             cbMaphongban.FormattingEnabled = true;
             cbMaphongban.Items.AddRange(new object[] { "Hành chính", "Nhân sự", "Giám sát" });
-            cbMaphongban.Location = new Point(328, 42);
+            cbMaphongban.Location = new Point(328, 47);
             cbMaphongban.Name = "cbMaphongban";
             cbMaphongban.Size = new Size(210, 23);
             cbMaphongban.TabIndex = 20;
             // 
             // tbMaduan
             // 
-            tbMaduan.Location = new Point(328, 71);
+            tbMaduan.Location = new Point(328, 76);
             tbMaduan.Name = "tbMaduan";
             tbMaduan.Size = new Size(210, 23);
             tbMaduan.TabIndex = 21;
             // 
             // pbEmployeeImage
             // 
-            pbEmployeeImage.Location = new Point(328, 100);
+            pbEmployeeImage.Location = new Point(328, 105);
             pbEmployeeImage.Name = "pbEmployeeImage";
             pbEmployeeImage.Size = new Size(96, 108);
             pbEmployeeImage.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -245,7 +252,7 @@ namespace Quanlyview
             // 
             // btSelectImage
             // 
-            btSelectImage.Location = new Point(430, 183);
+            btSelectImage.Location = new Point(430, 188);
             btSelectImage.Name = "btSelectImage";
             btSelectImage.Size = new Size(95, 25);
             btSelectImage.TabIndex = 23;
@@ -279,7 +286,7 @@ namespace Quanlyview
             groupBox1.Controls.Add(label1);
             groupBox1.Location = new Point(212, 39);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(554, 214);
+            groupBox1.Size = new Size(554, 219);
             groupBox1.TabIndex = 25;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin nhân viên";
@@ -344,26 +351,76 @@ namespace Quanlyview
             // 
             // groupBox4
             // 
+            groupBox4.Controls.Add(lTaiKhoan);
+            groupBox4.Controls.Add(linkLabel1);
             groupBox4.Location = new Point(12, 101);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(181, 186);
+            groupBox4.Size = new Size(181, 118);
             groupBox4.TabIndex = 31;
             groupBox4.TabStop = false;
             groupBox4.Text = "Danh mục";
             // 
+            // lTaiKhoan
+            // 
+            lTaiKhoan.AutoSize = true;
+            lTaiKhoan.LinkColor = Color.FromArgb(64, 0, 0);
+            lTaiKhoan.Location = new Point(21, 48);
+            lTaiKhoan.Name = "lTaiKhoan";
+            lTaiKhoan.Size = new Size(101, 15);
+            lTaiKhoan.TabIndex = 1;
+            lTaiKhoan.TabStop = true;
+            lTaiKhoan.Text = "Tài khoản quản trị";
+            lTaiKhoan.LinkClicked += lTaiKhoan_LinkClicked;
+            // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.LinkColor = Color.FromArgb(64, 0, 0);
+            linkLabel1.Location = new Point(22, 23);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(100, 15);
+            linkLabel1.TabIndex = 0;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "Quản lí nhân viên";
+            // 
             // groupBox5
             // 
-            groupBox5.Location = new Point(12, 297);
+            groupBox5.Controls.Add(linkLabel4);
+            groupBox5.Controls.Add(linkLabel5);
+            groupBox5.Location = new Point(12, 242);
             groupBox5.Name = "groupBox5";
             groupBox5.Size = new Size(181, 118);
             groupBox5.TabIndex = 32;
             groupBox5.TabStop = false;
             groupBox5.Text = "Khác";
             // 
+            // linkLabel4
+            // 
+            linkLabel4.AutoSize = true;
+            linkLabel4.LinkColor = Color.FromArgb(64, 0, 0);
+            linkLabel4.Location = new Point(20, 47);
+            linkLabel4.Name = "linkLabel4";
+            linkLabel4.Size = new Size(50, 15);
+            linkLabel4.TabIndex = 3;
+            linkLabel4.TabStop = true;
+            linkLabel4.Text = "Trợ giúp";
+            // 
+            // linkLabel5
+            // 
+            linkLabel5.AutoSize = true;
+            linkLabel5.LinkColor = Color.FromArgb(64, 0, 0);
+            linkLabel5.Location = new Point(21, 22);
+            linkLabel5.Name = "linkLabel5";
+            linkLabel5.Size = new Size(58, 15);
+            linkLabel5.TabIndex = 2;
+            linkLabel5.TabStop = true;
+            linkLabel5.Text = "Giới thiệu";
+            // 
             // Quanly
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.RosyBrown;
             ClientSize = new Size(920, 427);
             Controls.Add(groupBox5);
             Controls.Add(groupBox4);
@@ -387,6 +444,10 @@ namespace Quanlyview
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
+            groupBox5.ResumeLayout(false);
+            groupBox5.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -439,5 +500,9 @@ namespace Quanlyview
         private GroupBox groupBox3;
         private GroupBox groupBox4;
         private GroupBox groupBox5;
+        private LinkLabel lTaiKhoan;
+        private LinkLabel linkLabel1;
+        private LinkLabel linkLabel4;
+        private LinkLabel linkLabel5;
     }
 }

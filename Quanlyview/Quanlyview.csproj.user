@@ -7,5 +7,8 @@
     <Compile Update="Quanly.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Taikhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

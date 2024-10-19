@@ -16,3 +16,5 @@ D:\c#\Quanlyview\Quanlyview\obj\Debug\net8.0-windows\Quanlyview.pdb
 D:\c#\Quanlyview\Quanlyview\obj\Debug\net8.0-windows\Quanlyview.genruntimeconfig.cache
 D:\c#\Quanlyview\Quanlyview\obj\Debug\net8.0-windows\ref\Quanlyview.dll
 D:\c#\Quanlyview\Quanlyview\obj\Debug\net8.0-windows\Quanlyview.sourcelink.json
+D:\c#\Quanlyview\Quanlyview\obj\Debug\net8.0-windows\Quanlyview.Taikhoan.resources
+D:\c#\Quanlyview\Quanlyview\obj\Debug\net8.0-windows\Quanlyview.Properties.Resources.resources

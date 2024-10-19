@@ -252,5 +252,12 @@ namespace Quanlyview
                 bs.DataSource = lstEmp.OrderBy(emp => emp.Id).ToList();
             }
         }
+
+        private void lTaiKhoan_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Taikhoan taikhoan = new Taikhoan();
+            taikhoan.Show();
+            this.Hide();
+        }
     }
 }
