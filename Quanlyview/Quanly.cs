@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using System.Drawing; // Ensure you have this using directive for Image
+using System.Drawing;
+using System.IO;
 
 namespace Quanlyview
 {
@@ -19,12 +20,7 @@ namespace Quanlyview
         {
             InitializeComponent();
             SetupImageList();
-
-            //ngay sinh
-            dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            dateTimePicker1.CustomFormat = "dd MMMM yyyy";
-            // Handle value changes (optional)
-            dateTimePicker1.ShowUpDown = true;
+            InitializeDateTimePicker();
         }
 
         private void Quanly_Load(object sender, EventArgs e)
@@ -32,15 +28,20 @@ namespace Quanlyview
             lstEmp = GetData();
             bs.DataSource = lstEmp;
             dgvEmployee.DataSource = bs;
-            SetupDataGridView(); // Setup DataGridView columns
-            dateTimePicker1.Value = DateTime.Now; // Set the default date to now
+            SetupDataGridView();
+        }
 
+        private void InitializeDateTimePicker()
+        {
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.CustomFormat = "dd MMMM yyyy";
+            dateTimePicker1.ShowUpDown = true;
+            dateTimePicker1.Value = DateTime.Now;
         }
 
         public List<Employee> GetData()
         {
-            // Sample data can be added here if needed
-            return lstEmp;
+            return lstEmp; // Load data (can be updated later with actual data retrieval logic)
         }
 
         private void SetupDataGridView()
@@ -53,7 +54,7 @@ namespace Quanlyview
             dgvEmployee.Columns[4].HeaderText = "Địa Chỉ";
             dgvEmployee.Columns[5].HeaderText = "Mã Dự Án";
             dgvEmployee.Columns[6].HeaderText = "Mã Phòng Ban";
-            dgvEmployee.Columns[7].HeaderText = "Ảnh"; // Add header for Birth Date
+            dgvEmployee.Columns[7].HeaderText = "Ảnh";
         }
 
         private void btThoat_Click(object sender, EventArgs e)
@@ -75,14 +76,19 @@ namespace Quanlyview
         {
             try
             {
-                int newId = int.Parse(tbId.Text);
+                if (!int.TryParse(tbId.Text, out int newId))
+                {
+                    MessageBox.Show("Lỗi: Vui lòng nhập số nguyên hợp lệ cho ID.");
+                    return;
+                }
+
                 if (lstEmp.Any(emp => emp.Id == newId))
                 {
                     MessageBox.Show("Lỗi: ID đã tồn tại. Vui lòng nhập ID khác.");
                     return;
                 }
 
-                Employee newEmp = new Employee
+                var newEmp = new Employee
                 {
                     Id = newId,
                     Name = tbName.Text,
@@ -91,20 +97,16 @@ namespace Quanlyview
                     Maduan = tbMaduan.Text,
                     Maphongban = cbMaphongban.Text,
                     ImagePath = employeeImagePath,
-                    BirthDate = dateTimePicker1.Value.Date 
+                    BirthDate = dateTimePicker1.Value.Date
                 };
 
                 lstEmp.Add(newEmp);
-                bs.ResetBindings(false);
+                RefreshBindings();
                 ClearInputFields();
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("Lỗi: Vui lòng nhập số nguyên hợp lệ cho ID.");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
+                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}");
             }
         }
 
@@ -112,20 +114,21 @@ namespace Quanlyview
         {
             if (dgvEmployee.CurrentRow == null) return;
 
-            int idx = dgvEmployee.CurrentRow.Index;
-            Employee em = lstEmp[idx];
+            var idx = dgvEmployee.CurrentRow.Index;
+            var emp = lstEmp[idx];
 
             try
             {
-                em.Id = int.Parse(tbId.Text);
-                em.Name = tbName.Text;
-                em.Gender = ckGender.Checked;
-                em.Address = tbAddress.Text;
-                em.Maduan = tbMaduan.Text;
-                em.Maphongban = cbMaphongban.Text;
-                em.ImagePath = employeeImagePath; // Save the image path
-                em.BirthDate = dateTimePicker1.Value.Date; // Update the BirthDate from DateTimePicker
-                bs.ResetBindings(false);
+                emp.Id = int.Parse(tbId.Text);
+                emp.Name = tbName.Text;
+                emp.Gender = ckGender.Checked;
+                emp.Address = tbAddress.Text;
+                emp.Maduan = tbMaduan.Text;
+                emp.Maphongban = cbMaphongban.Text;
+                emp.ImagePath = employeeImagePath;
+                emp.BirthDate = dateTimePicker1.Value.Date;
+
+                RefreshBindings();
                 ClearInputFields();
             }
             catch (FormatException)
@@ -140,91 +143,114 @@ namespace Quanlyview
 
             int idx = dgvEmployee.CurrentRow.Index;
             lstEmp.RemoveAt(idx);
-            bs.ResetBindings(false);
+
+            RefreshBindings();
         }
 
         private void dgvEmployee_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || e.RowIndex >= lstEmp.Count) return;
 
-            Employee em = lstEmp[e.RowIndex];
+            var emp = lstEmp[e.RowIndex];
 
-            tbId.Text = em.Id.ToString();
-            tbName.Text = em.Name;
-            ckGender.Checked = em.Gender;
-            tbAddress.Text = em.Address;
-            tbMaduan.Text = em.Maduan;
-            cbMaphongban.Text = em.Maphongban;
-            dateTimePicker1.Value = em.BirthDate; // Display BirthDate in DateTimePicker
-
-            // Load employee image if exists
-            if (!string.IsNullOrEmpty(em.ImagePath) && System.IO.File.Exists(em.ImagePath))
+            tbId.Text = emp.Id.ToString();
+            tbName.Text = emp.Name;
+            ckGender.Checked = emp.Gender;
+            tbAddress.Text = emp.Address;
+            tbMaduan.Text = emp.Maduan;
+            cbMaphongban.Text = emp.Maphongban;
+            if (emp.BirthDate != null && emp.BirthDate >= dateTimePicker1.MinDate && emp.BirthDate <= dateTimePicker1.MaxDate)
             {
-                pbEmployeeImage.Image = Image.FromFile(em.ImagePath);
+                dateTimePicker1.Value = emp.BirthDate;
             }
             else
             {
-                pbEmployeeImage.Image = null; // Clear image if not available
+                dateTimePicker1.Value = DateTime.Now; // Default to current date
             }
+
+
+            if (File.Exists(emp.ImagePath))
+            {
+                pbEmployeeImage.Image = Image.FromFile(emp.ImagePath);
+            }
+            else
+            {
+                pbEmployeeImage.Image = null;
+            }
+        }
+
+        private void RefreshBindings()
+        {
+            bs.DataSource = lstEmp.ToList();
+            bs.ResetBindings(false);
+            dgvEmployee.ClearSelection(); // Optional: Clear selection for better UX
         }
 
         private void ClearInputFields()
         {
-            tbId.Text = "";
-            tbName.Text = "";
-            tbAddress.Text = "";
-            tbMaduan.Text = "";
+            tbId.Clear();
+            tbName.Clear();
+            tbAddress.Clear();
+            tbMaduan.Clear();
             cbMaphongban.Text = "";
             ckGender.Checked = false;
-            pbEmployeeImage.Image = null; // Clear image display
-            dateTimePicker1.Value = DateTime.Now; // Reset DateTimePicker to current date
+            pbEmployeeImage.Image = null;
+            dateTimePicker1.Value = DateTime.Now;
         }
 
         private void SetupImageList()
         {
-            ImageList imageList = new ImageList();
-            imageList.ImageSize = new Size(24, 24);
+            var imageList = new ImageList { ImageSize = new Size(24, 24) };
 
-            // Add images to ImageList (make sure paths are correct)
-            imageList.Images.Add(Image.FromFile("Images/add.png"));    // Index 0
-            imageList.Images.Add(Image.FromFile("Images/edit.png"));   // Index 1
-            imageList.Images.Add(Image.FromFile("Images/delete.png")); // Index 2
+            try
+            {
+                imageList.Images.Add(Image.FromFile("Images/add.png"));
+                imageList.Images.Add(Image.FromFile("Images/edit.png"));
+                imageList.Images.Add(Image.FromFile("Images/delete.png"));
+                imageList.Images.Add(Image.FromFile("Images/logout.png"));
+                imageList.Images.Add(Image.FromFile("Images/exit.png"));
 
-            // Assign ImageList to buttons
-            btAddNew.ImageList = imageList;
-            btAddNew.ImageIndex = 0;
-
-            btEdit.ImageList = imageList;
-            btEdit.ImageIndex = 1;
-
-            btDelete.ImageList = imageList;
-            btDelete.ImageIndex = 2;
+                btAddNew.ImageList = imageList; btAddNew.ImageIndex = 0;
+                btEdit.ImageList = imageList; btEdit.ImageIndex = 1;
+                btDelete.ImageList = imageList; btDelete.ImageIndex = 2;
+                btDangXuat.ImageList = imageList; btDangXuat.ImageIndex = 3;
+                btThoat.ImageList = imageList; btThoat.ImageIndex = 4;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading images: {ex.Message}");
+            }
         }
 
         private void btSelectImage_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog ofd = new OpenFileDialog())
+            using (var ofd = new OpenFileDialog { Filter = "Image Files (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png" })
             {
-                ofd.Filter = "Image Files (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png";
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    employeeImagePath = ofd.FileName; // Store the image path
-                    pbEmployeeImage.Image = Image.FromFile(employeeImagePath); // Show the image
+                    employeeImagePath = ofd.FileName;
+                    pbEmployeeImage.Image = Image.FromFile(employeeImagePath);
                 }
             }
         }
 
-        // Method to set a specific date for the DateTimePicker (if needed)
-        private void SetDateForDateTimePicker(DateTime date)
+        private void txtTimKiem_TextChanged(object sender, EventArgs e)
         {
-            dateTimePicker1.Value = date; // Set a specific date, e.g. new DateTime(2024, 10, 17)
+            var searchValue = txtTimKiem.Text.ToLower();
+            bs.DataSource = lstEmp.Where(emp => emp.Name.ToLower().Contains(searchValue) ||
+                                                emp.Id.ToString().Contains(searchValue)).ToList();
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        private void cbSapXep_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DateTime selectedDate = dateTimePicker1.Value;
-            // Do something with the selected date
-            this.Text = dateTimePicker1.Value.ToString("dd MMMM yyyy");
+            if (cbSapXep.SelectedItem?.ToString() == "Tên")
+            {
+                bs.DataSource = lstEmp.OrderBy(emp => emp.Name).ToList();
+            }
+            else if (cbSapXep.SelectedItem?.ToString() == "Mã")
+            {
+                bs.DataSource = lstEmp.OrderBy(emp => emp.Id).ToList();
+            }
         }
     }
 }

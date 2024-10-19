@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|solutionrelative:quanlyview\\quanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|d:\\c#\\quanlyview\\quanlyview\\quanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|solutionrelative:quanlyview\\quanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|d:\\c#\\quanlyview\\quanlyview\\quanly.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|solutionrelative:quanlyview\\quanly.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|d:\\c#\\quanlyview\\quanlyview\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|solutionrelative:quanlyview\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|d:\\c#\\quanlyview\\quanlyview\\quanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|solutionrelative:quanlyview\\quanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,43 +50,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\c#\\Quanlyview\\Quanlyview\\Program.cs",
-              "RelativeDocumentMoniker": "Quanlyview\\Program.cs",
-              "ToolTip": "D:\\c#\\Quanlyview\\Quanlyview\\Program.cs",
-              "RelativeToolTip": "Quanlyview\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-17T12:44:33.579Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Quanly.Designer.cs",
-              "DocumentMoniker": "D:\\c#\\Quanlyview\\Quanlyview\\Quanly.Designer.cs",
-              "RelativeDocumentMoniker": "Quanlyview\\Quanly.Designer.cs",
-              "ToolTip": "D:\\c#\\Quanlyview\\Quanlyview\\Quanly.Designer.cs",
-              "RelativeToolTip": "Quanlyview\\Quanly.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADkBAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-17T11:52:32.12Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Employee.cs",
-              "DocumentMoniker": "D:\\c#\\Quanlyview\\Quanlyview\\Employee.cs",
-              "RelativeDocumentMoniker": "Quanlyview\\Employee.cs",
-              "ToolTip": "D:\\c#\\Quanlyview\\Quanlyview\\Employee.cs",
-              "RelativeToolTip": "Quanlyview\\Employee.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAtwAsAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-17T11:35:18.261Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Quanly.cs [Design]",
               "DocumentMoniker": "D:\\c#\\Quanlyview\\Quanlyview\\Quanly.cs",
@@ -94,20 +57,60 @@
               "ToolTip": "D:\\c#\\Quanlyview\\Quanlyview\\Quanly.cs [Design]",
               "RelativeToolTip": "Quanlyview\\Quanly.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-17T11:13:26.724Z",
+              "WhenOpened": "2024-10-19T02:57:11.719Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\c#\\Quanlyview\\Quanlyview\\Program.cs",
+              "RelativeDocumentMoniker": "Quanlyview\\Program.cs",
+              "ToolTip": "D:\\c#\\Quanlyview\\Quanlyview\\Program.cs",
+              "RelativeToolTip": "Quanlyview\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-17T12:44:33.579Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Quanly.Designer.cs",
+              "DocumentMoniker": "D:\\c#\\Quanlyview\\Quanlyview\\Quanly.Designer.cs",
+              "RelativeDocumentMoniker": "Quanlyview\\Quanly.Designer.cs",
+              "ToolTip": "D:\\c#\\Quanlyview\\Quanlyview\\Quanly.Designer.cs",
+              "RelativeToolTip": "Quanlyview\\Quanly.Designer.cs",
+              "ViewState": "AgIAAEoBAAAAAAAAAAAQwFcBAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-17T11:52:32.12Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "Employee.cs",
+              "DocumentMoniker": "D:\\c#\\Quanlyview\\Quanlyview\\Employee.cs",
+              "RelativeDocumentMoniker": "Quanlyview\\Employee.cs",
+              "ToolTip": "D:\\c#\\Quanlyview\\Quanlyview\\Employee.cs",
+              "RelativeToolTip": "Quanlyview\\Employee.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAtwAoAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-17T11:35:18.261Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Quanly.cs",
               "DocumentMoniker": "D:\\c#\\Quanlyview\\Quanlyview\\Quanly.cs",
               "RelativeDocumentMoniker": "Quanlyview\\Quanly.cs",
               "ToolTip": "D:\\c#\\Quanlyview\\Quanlyview\\Quanly.cs",
               "RelativeToolTip": "Quanlyview\\Quanly.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAADgvxEAAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAAJQAAAAAAAAAAAAmwJ0AAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-17T10:22:37.338Z"
+              "WhenOpened": "2024-10-17T10:22:37.338Z",
+              "EditorCaption": ""
             }
           ]
         }
