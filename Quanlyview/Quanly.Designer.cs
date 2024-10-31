@@ -58,6 +58,7 @@ namespace Quanlyview
             txtTimKiem = new TextBox();
             label9 = new Label();
             groupBox3 = new GroupBox();
+            btReload = new Button();
             groupBox4 = new GroupBox();
             lTaiKhoan = new LinkLabel();
             linkLabel1 = new LinkLabel();
@@ -75,7 +76,7 @@ namespace Quanlyview
             // 
             // btThoat
             // 
-            btThoat.Location = new Point(117, 26);
+            btThoat.Location = new Point(60, 27);
             btThoat.Name = "btThoat";
             btThoat.Size = new Size(47, 30);
             btThoat.TabIndex = 0;
@@ -84,9 +85,9 @@ namespace Quanlyview
             // 
             // btDangXuat
             // 
-            btDangXuat.Location = new Point(21, 25);
+            btDangXuat.Location = new Point(6, 27);
             btDangXuat.Name = "btDangXuat";
-            btDangXuat.Size = new Size(80, 31);
+            btDangXuat.Size = new Size(48, 30);
             btDangXuat.TabIndex = 1;
             btDangXuat.UseVisualStyleBackColor = true;
             btDangXuat.Click += btDangXuat_Click;
@@ -99,7 +100,7 @@ namespace Quanlyview
             dgvEmployee.Name = "dgvEmployee";
             dgvEmployee.Size = new Size(685, 120);
             dgvEmployee.TabIndex = 2;
-            dgvEmployee.RowEnter += dgvEmployee_RowEnter;
+            dgvEmployee.CellClick += dgvEmployee_CellClick;
             // 
             // label1
             // 
@@ -229,7 +230,7 @@ namespace Quanlyview
             // cbMaphongban
             // 
             cbMaphongban.FormattingEnabled = true;
-            cbMaphongban.Items.AddRange(new object[] { "Hành chính", "Nhân sự", "Giám sát" });
+            cbMaphongban.Items.AddRange(new object[] { "HC", "NS", "ANM", "QL" });
             cbMaphongban.Location = new Point(328, 47);
             cbMaphongban.Name = "cbMaphongban";
             cbMaphongban.Size = new Size(210, 23);
@@ -341,6 +342,7 @@ namespace Quanlyview
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(btReload);
             groupBox3.Controls.Add(btDangXuat);
             groupBox3.Controls.Add(btThoat);
             groupBox3.Location = new Point(12, 12);
@@ -349,6 +351,15 @@ namespace Quanlyview
             groupBox3.TabIndex = 30;
             groupBox3.TabStop = false;
             groupBox3.Text = "Tác vụ";
+            // 
+            // btReload
+            // 
+            btReload.Location = new Point(113, 27);
+            btReload.Name = "btReload";
+            btReload.Size = new Size(50, 30);
+            btReload.TabIndex = 2;
+            btReload.UseVisualStyleBackColor = true;
+            btReload.Click += btReload_Click;
             // 
             // groupBox4
             // 
@@ -505,5 +516,6 @@ namespace Quanlyview
         private LinkLabel linkLabel1;
         private LinkLabel linkLabel4;
         private LinkLabel linkLabel5;
+        private Button btReload;
     }
 }

@@ -41,7 +41,7 @@ namespace Quanlyview
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.CustomFormat = "dd MMMM yyyy";
             dateTimePicker1.ShowUpDown = true;
-            dateTimePicker1.Value = DateTime.Now;
+            dateTimePicker1.Value = DateTime.Now.AddYears(-18); // Đặt ngày mặc định lớn hơn 18 tuổi
         }
 
         public List<Employee> GetData()
@@ -84,7 +84,7 @@ namespace Quanlyview
             using (sqlCon = new SqlConnection(strCon))
             {
                 sqlCon.Open();
-                string query = "INSERT INTO Employees (Id, Name, BirthDate, Gender, Address, Maduan, Maphongban, ImagePath) VALUES (@Id, @Name, @BirthDate, @Gender, @Address, @Maduan, @Maphongban, @ImagePath)";
+                string query = "INSERT INTO Employee (Id, Name, BirthDate, Gender, Address, Maduan, Maphongban, ImagePath) VALUES (@Id, @Name, @BirthDate, @Gender, @Address, @Maduan, @Maphongban, @ImagePath)";
 
                 using (SqlCommand cmd = new SqlCommand(query, sqlCon))
                 {
@@ -106,7 +106,7 @@ namespace Quanlyview
             using (sqlCon = new SqlConnection(strCon))
             {
                 sqlCon.Open();
-                string query = "UPDATE Employees SET Name=@Name, BirthDate=@BirthDate, Gender=@Gender, Address=@Address, Maduan=@Maduan, Maphongban=@Maphongban, ImagePath=@ImagePath WHERE Id=@Id";
+                string query = "UPDATE Employee SET Name=@Name, BirthDate=@BirthDate, Gender=@Gender, Address=@Address, Maduan=@Maduan, Maphongban=@Maphongban, ImagePath=@ImagePath WHERE Id=@Id";
 
                 using (SqlCommand cmd = new SqlCommand(query, sqlCon))
                 {
@@ -128,7 +128,7 @@ namespace Quanlyview
             using (sqlCon = new SqlConnection(strCon))
             {
                 sqlCon.Open();
-                string query = "DELETE FROM Employees WHERE Id=@Id";
+                string query = "DELETE FROM Employee WHERE Id=@Id";
 
                 using (SqlCommand cmd = new SqlCommand(query, sqlCon))
                 {
@@ -170,6 +170,7 @@ namespace Quanlyview
         {
             try
             {
+
                 if (!int.TryParse(tbId.Text, out int newId))
                 {
                     MessageBox.Show("Lỗi: Vui lòng nhập số nguyên hợp lệ cho ID.");
@@ -181,7 +182,16 @@ namespace Quanlyview
                     MessageBox.Show("Lỗi: ID đã tồn tại. Vui lòng nhập ID khác.");
                     return;
                 }
-
+                if (string.IsNullOrWhiteSpace(tbName.Text))
+                {
+                    MessageBox.Show("Lỗi: Vui lòng nhập tên nhân viên.");
+                    return;
+                }
+                if (dateTimePicker1.Value > DateTime.Now.AddYears(-18))
+                {
+                    MessageBox.Show("Lỗi: Nhân viên phải lớn hơn 18 tuổi.");
+                    return;
+                }
                 var newEmp = new Employee
                 {
                     Id = newId,
@@ -195,6 +205,7 @@ namespace Quanlyview
                 };
 
                 lstEmp.Add(newEmp);
+                AddEmployee(newEmp); // Gọi hàm thêm vào cơ sở dữ liệu
                 RefreshBindings();
                 ClearInputFields();
             }
@@ -221,7 +232,12 @@ namespace Quanlyview
                     MessageBox.Show("Lỗi: ID này đã tồn tại. Vui lòng nhập ID khác.");
                     return;
                 }
-
+                // Kiểm tra tuổi
+                if (dateTimePicker1.Value > DateTime.Now.AddYears(-18))
+                {
+                    MessageBox.Show("Lỗi: Nhân viên phải lớn hơn 18 tuổi.");
+                    return;
+                }
                 // Cập nhật thông tin nhân viên
                 emp.Id = newId;
                 emp.Name = tbName.Text;
@@ -232,6 +248,7 @@ namespace Quanlyview
                 emp.ImagePath = employeeImagePath;
                 emp.BirthDate = dateTimePicker1.Value.Date;
 
+                UpdateEmployee(emp); // Gọi hàm cập nhật vào cơ sở dữ liệu
                 RefreshBindings(); // Cập nhật dữ liệu hiển thị trên DataGridView
                 ClearInputFields(); // Xóa các ô nhập liệu
             }
@@ -246,42 +263,45 @@ namespace Quanlyview
             if (dgvEmployee.CurrentRow == null) return;
 
             int idx = dgvEmployee.CurrentRow.Index;
-            lstEmp.RemoveAt(idx);
+            var empId = lstEmp[idx].Id;
 
+
+            lstEmp.RemoveAt(idx);
+            DeleteEmployee(empId); // Gọi hàm xóa khỏi cơ sở dữ liệu
             RefreshBindings();
         }
 
-        private void dgvEmployee_RowEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0 || e.RowIndex >= lstEmp.Count) return;
+        //private void dgvEmployee_RowEnter(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    if (e.RowIndex < 0 || e.RowIndex >= lstEmp.Count) return;
 
-            var emp = lstEmp[e.RowIndex];
+        //    var emp = lstEmp[e.RowIndex];
 
-            tbId.Text = emp.Id.ToString();
-            tbName.Text = emp.Name;
-            ckGender.Checked = emp.Gender;
-            tbAddress.Text = emp.Address;
-            tbMaduan.Text = emp.Maduan;
-            cbMaphongban.Text = emp.Maphongban;
-            if (emp.BirthDate != null && emp.BirthDate >= dateTimePicker1.MinDate && emp.BirthDate <= dateTimePicker1.MaxDate)
-            {
-                dateTimePicker1.Value = emp.BirthDate;
-            }
-            else
-            {
-                dateTimePicker1.Value = DateTime.Now; // Default to current date
-            }
+        //    tbId.Text = emp.Id.ToString();
+        //    tbName.Text = emp.Name;
+        //    ckGender.Checked = emp.Gender;
+        //    tbAddress.Text = emp.Address;
+        //    tbMaduan.Text = emp.Maduan;
+        //    cbMaphongban.Text = emp.Maphongban;
+        //    if (emp.BirthDate != null && emp.BirthDate >= dateTimePicker1.MinDate && emp.BirthDate <= dateTimePicker1.MaxDate)
+        //    {
+        //        dateTimePicker1.Value = emp.BirthDate;
+        //    }
+        //    else
+        //    {
+        //        dateTimePicker1.Value = DateTime.Now; // Default to current date
+        //    }
 
 
-            if (File.Exists(emp.ImagePath))
-            {
-                pbEmployeeImage.Image = Image.FromFile(emp.ImagePath);
-            }
-            else
-            {
-                pbEmployeeImage.Image = null;
-            }
-        }
+        //    if (File.Exists(emp.ImagePath))
+        //    {
+        //        pbEmployeeImage.Image = Image.FromFile(emp.ImagePath);
+        //    }
+        //    else
+        //    {
+        //        pbEmployeeImage.Image = null;
+        //    }
+        //}
 
         private void RefreshBindings()
         {
@@ -313,12 +333,15 @@ namespace Quanlyview
                 imageList.Images.Add(Image.FromFile("Images/delete.png"));
                 imageList.Images.Add(Image.FromFile("Images/logout.png"));
                 imageList.Images.Add(Image.FromFile("Images/exit.png"));
+                imageList.Images.Add(Image.FromFile("Images/reload.png"));
 
                 btAddNew.ImageList = imageList; btAddNew.ImageIndex = 0;
                 btEdit.ImageList = imageList; btEdit.ImageIndex = 1;
                 btDelete.ImageList = imageList; btDelete.ImageIndex = 2;
                 btDangXuat.ImageList = imageList; btDangXuat.ImageIndex = 3;
                 btThoat.ImageList = imageList; btThoat.ImageIndex = 4;
+                btReload.ImageList = imageList; btReload.ImageIndex = 5;
+
             }
             catch (Exception ex)
             {
@@ -367,6 +390,55 @@ namespace Quanlyview
         private void tbAddress_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgvEmployee_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.RowIndex >= lstEmp.Count) return;
+
+            var emp = lstEmp[e.RowIndex];
+
+            tbId.Text = emp.Id.ToString();
+            tbName.Text = emp.Name;
+            ckGender.Checked = emp.Gender;
+            tbAddress.Text = emp.Address;
+            tbMaduan.Text = emp.Maduan;
+            cbMaphongban.Text = emp.Maphongban;
+            if (emp.BirthDate != null && emp.BirthDate >= dateTimePicker1.MinDate && emp.BirthDate <= dateTimePicker1.MaxDate)
+            {
+                dateTimePicker1.Value = emp.BirthDate;
+            }
+            else
+            {
+                dateTimePicker1.Value = DateTime.Now; // Default to current date
+            }
+
+
+            if (File.Exists(emp.ImagePath))
+            {
+                pbEmployeeImage.Image = Image.FromFile(emp.ImagePath);
+            }
+            else
+            {
+                pbEmployeeImage.Image = null;
+            }
+        }
+
+        private void btReload_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Lấy lại danh sách nhân viên
+                lstEmp = GetData();
+
+                // Cập nhật BindingSource và DataGridView
+                bs.DataSource = lstEmp;
+                RefreshBindings();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã xảy ra lỗi khi tải lại dữ liệu: {ex.Message}");
+            }
         }
     }
 }
