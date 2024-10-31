@@ -1,9 +1,15 @@
+using System.Windows.Forms;
+using System.Data.SqlClient;
+
 namespace Quanlyview
 {
     public partial class Form1 : Form
     {
         string tentaikhoan = "admin";
         string matkhau = "123";
+
+        string strCon = @"Data Source=LAPTOP-QBKMQRNF\SQLEXPRESS01;Initial Catalog=Employee;User ID=sa;Trust Server Certificate=True";
+        SqlConnection sqlCon = null;
         public Form1()
         {
             InitializeComponent();

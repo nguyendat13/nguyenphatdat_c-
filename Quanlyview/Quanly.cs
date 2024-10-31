@@ -4,11 +4,16 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Drawing;
 using System.IO;
+using System.Data.SqlClient;
 
 namespace Quanlyview
 {
     public partial class Quanly : Form
     {
+        private string strCon = @"Data Source=LAPTOP-QBKMQRNF\SQLEXPRESS01;Initial Catalog=Employee;User ID=sa;Password=1234;Encrypt=False;";
+        private SqlConnection sqlCon; // Khai báo SqlConnection
+
+
         public List<Employee> lstEmp = new List<Employee>();
         private BindingSource bs = new BindingSource();
         public bool isThoat = true;
@@ -41,7 +46,96 @@ namespace Quanlyview
 
         public List<Employee> GetData()
         {
-            return lstEmp; // Load data (can be updated later with actual data retrieval logic)
+            List<Employee> employees = new List<Employee>();
+
+            using (sqlCon = new SqlConnection(strCon)) // Sử dụng từ khóa using để quản lý tài nguyên
+            {
+                sqlCon.Open(); // Mở kết nối
+
+                // Câu truy vấn để lấy dữ liệu
+                string query = "SELECT Id, Name, BirthDate, Gender, Address, Maduan, Maphongban, ImagePath FROM Employee";
+
+                using (SqlCommand cmd = new SqlCommand(query, sqlCon)) // Tạo SqlCommand
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader()) // Sử dụng using cho SqlDataReader
+                    {
+                        while (reader.Read()) // Đọc dữ liệu
+                        {
+                            Employee emp = new Employee
+                            {
+                                Id = reader.GetInt32(0), // Mã
+                                Name = reader.GetString(1), // Tên
+                                BirthDate = reader.GetDateTime(2), // Ngày sinh
+                                Gender = reader.GetBoolean(3), // Giới tính
+                                Address = reader.GetString(4), // Địa chỉ
+                                Maduan = reader.GetString(5), // Mã dự án
+                                Maphongban = reader.GetString(6), // Mã phòng ban
+                                ImagePath = reader.IsDBNull(7) ? null : reader.GetString(7) // Ảnh
+                            };
+                            employees.Add(emp); // Thêm vào danh sách
+                        }
+                    }
+                }
+            }
+            return employees; // Trả về danh sách nhân viên
+        }
+        private void AddEmployee(Employee newEmp)
+        {
+            using (sqlCon = new SqlConnection(strCon))
+            {
+                sqlCon.Open();
+                string query = "INSERT INTO Employees (Id, Name, BirthDate, Gender, Address, Maduan, Maphongban, ImagePath) VALUES (@Id, @Name, @BirthDate, @Gender, @Address, @Maduan, @Maphongban, @ImagePath)";
+
+                using (SqlCommand cmd = new SqlCommand(query, sqlCon))
+                {
+                    cmd.Parameters.AddWithValue("@Id", newEmp.Id);
+                    cmd.Parameters.AddWithValue("@Name", newEmp.Name);
+                    cmd.Parameters.AddWithValue("@BirthDate", newEmp.BirthDate);
+                    cmd.Parameters.AddWithValue("@Gender", newEmp.Gender);
+                    cmd.Parameters.AddWithValue("@Address", newEmp.Address);
+                    cmd.Parameters.AddWithValue("@Maduan", newEmp.Maduan);
+                    cmd.Parameters.AddWithValue("@Maphongban", newEmp.Maphongban);
+                    cmd.Parameters.AddWithValue("@ImagePath", newEmp.ImagePath);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        private void UpdateEmployee(Employee emp)
+        {
+            using (sqlCon = new SqlConnection(strCon))
+            {
+                sqlCon.Open();
+                string query = "UPDATE Employees SET Name=@Name, BirthDate=@BirthDate, Gender=@Gender, Address=@Address, Maduan=@Maduan, Maphongban=@Maphongban, ImagePath=@ImagePath WHERE Id=@Id";
+
+                using (SqlCommand cmd = new SqlCommand(query, sqlCon))
+                {
+                    cmd.Parameters.AddWithValue("@Id", emp.Id);
+                    cmd.Parameters.AddWithValue("@Name", emp.Name);
+                    cmd.Parameters.AddWithValue("@BirthDate", emp.BirthDate);
+                    cmd.Parameters.AddWithValue("@Gender", emp.Gender);
+                    cmd.Parameters.AddWithValue("@Address", emp.Address);
+                    cmd.Parameters.AddWithValue("@Maduan", emp.Maduan);
+                    cmd.Parameters.AddWithValue("@Maphongban", emp.Maphongban);
+                    cmd.Parameters.AddWithValue("@ImagePath", emp.ImagePath);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        private void DeleteEmployee(int empId)
+        {
+            using (sqlCon = new SqlConnection(strCon))
+            {
+                sqlCon.Open();
+                string query = "DELETE FROM Employees WHERE Id=@Id";
+
+                using (SqlCommand cmd = new SqlCommand(query, sqlCon))
+                {
+                    cmd.Parameters.AddWithValue("@Id", empId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         private void SetupDataGridView()
@@ -119,7 +213,17 @@ namespace Quanlyview
 
             try
             {
-                emp.Id = int.Parse(tbId.Text);
+                int newId = int.Parse(tbId.Text);
+
+                // Kiểm tra xem ID mới đã tồn tại trong danh sách nhưng không phải của nhân viên hiện tại
+                if (lstEmp.Any(e => e.Id == newId && e != emp))
+                {
+                    MessageBox.Show("Lỗi: ID này đã tồn tại. Vui lòng nhập ID khác.");
+                    return;
+                }
+
+                // Cập nhật thông tin nhân viên
+                emp.Id = newId;
                 emp.Name = tbName.Text;
                 emp.Gender = ckGender.Checked;
                 emp.Address = tbAddress.Text;
@@ -128,8 +232,8 @@ namespace Quanlyview
                 emp.ImagePath = employeeImagePath;
                 emp.BirthDate = dateTimePicker1.Value.Date;
 
-                RefreshBindings();
-                ClearInputFields();
+                RefreshBindings(); // Cập nhật dữ liệu hiển thị trên DataGridView
+                ClearInputFields(); // Xóa các ô nhập liệu
             }
             catch (FormatException)
             {
@@ -258,6 +362,11 @@ namespace Quanlyview
             Taikhoan taikhoan = new Taikhoan();
             taikhoan.Show();
             this.Hide();
+        }
+
+        private void tbAddress_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

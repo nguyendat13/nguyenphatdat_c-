@@ -197,6 +197,7 @@ namespace Quanlyview
             tbAddress.Name = "tbAddress";
             tbAddress.Size = new Size(210, 23);
             tbAddress.TabIndex = 14;
+            tbAddress.TextChanged += tbAddress_TextChanged;
             // 
             // label6
             // 
