@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "D:\\c#\\Quanlyview\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|d:\\c#\\quanlyview\\quanlyview\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|solutionrelative:quanlyview\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|d:\\c#\\quanlyview\\quanlyview\\quanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|solutionrelative:quanlyview\\quanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|d:\\c#\\quanlyview\\quanlyview\\quanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|D:\\c#\\Quanlyview\\quanlyview\\quanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|solutionrelative:quanlyview\\quanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|d:\\c#\\quanlyview\\quanlyview\\quanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|solutionrelative:quanlyview\\quanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|d:\\c#\\quanlyview\\quanlyview\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|solutionrelative:quanlyview\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|d:\\c#\\quanlyview\\quanlyview\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,18 +54,17 @@
               "RelativeToolTip": "Quanlyview\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-02T00:49:19.653Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-02T00:49:19.653Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Quanly.cs",
               "DocumentMoniker": "D:\\c#\\Quanlyview\\Quanlyview\\Quanly.cs",
               "RelativeDocumentMoniker": "Quanlyview\\Quanly.cs",
               "ToolTip": "D:\\c#\\Quanlyview\\Quanlyview\\Quanly.cs",
               "RelativeToolTip": "Quanlyview\\Quanly.cs",
-              "ViewState": "AgIAAFcBAAAAAAAAAADwvxkBAABHAAAAAAAAAA==",
+              "ViewState": "AgIAAMMAAAAAAAAAAAAkwMcAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-01T14:25:31.919Z",
               "EditorCaption": ""
@@ -84,13 +83,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Form1.cs",
               "DocumentMoniker": "D:\\c#\\Quanlyview\\Quanlyview\\Form1.cs",
               "RelativeDocumentMoniker": "Quanlyview\\Form1.cs",
               "ToolTip": "D:\\c#\\Quanlyview\\Quanlyview\\Form1.cs",
               "RelativeToolTip": "Quanlyview\\Form1.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwAAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-01T14:57:05.552Z",
               "EditorCaption": ""

@@ -42,7 +42,7 @@ namespace Quanlyview
         {
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.CustomFormat = "dd MMMM yyyy";
-            dateTimePicker1.ShowUpDown = true;
+            dateTimePicker1.ShowUpDown = false;
             dateTimePicker1.Value = DateTime.Now.AddYears(-18); // Đặt ngày mặc định lớn hơn 18 tuổi
         }
 
@@ -198,6 +198,34 @@ namespace Quanlyview
                     MessageBox.Show("Lỗi: Tên không được chứa số.");
                     return;
                 }
+               
+
+                if (!System.Text.RegularExpressions.Regex.IsMatch(tbName.Text, @"^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềểẾỄỆỈỊỌỎỐỒỔỖỘớờởỡợỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+$"))
+                {
+                    MessageBox.Show("Lỗi: Tên không được chứa ký tự đặc biệt.");
+                    return;
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(tbAddress.Text, @"^[a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềểẾỄỆỈỊỌỎỐỒỔỖỘớờởỡợỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ.,\s]+$"))
+                {
+                    MessageBox.Show("Lỗi: Địa chỉ không được chứa ký tự đặc biệt.");
+                    return;
+                }
+
+                // Kiểm tra mã dự án không chứa ký tự đặc biệt (chỉ cho phép chữ cái, số và khoảng trắng)
+                if (!System.Text.RegularExpressions.Regex.IsMatch(tbMaduan.Text, @"^[a-zA-Z0-9\s]+$"))
+                {
+                    MessageBox.Show("Lỗi: Mã dự án không được chứa ký tự đặc biệt.");
+                    return;
+                }
+
+                // Kiểm tra mã phòng ban không chứa ký tự đặc biệt (chỉ cho phép chữ cái, số và khoảng trắng)
+                if (!System.Text.RegularExpressions.Regex.IsMatch(cbMaphongban.Text, @"^[a-zA-Z0-9\s]+$"))
+                {
+                    MessageBox.Show("Lỗi: Mã phòng ban không được chứa ký tự đặc biệt.");
+                    return;
+                }
+
+
                 if (dateTimePicker1.Value > DateTime.Now.AddYears(-18))
                 {
                     MessageBox.Show("Lỗi: Nhân viên phải lớn hơn 18 tuổi.");
@@ -247,6 +275,31 @@ namespace Quanlyview
                 if (System.Text.RegularExpressions.Regex.IsMatch(tbName.Text, @"\d"))
                 {
                     MessageBox.Show("Lỗi: Tên không được chứa số.");
+                    return;
+                }
+             
+                if (!System.Text.RegularExpressions.Regex.IsMatch(tbName.Text, @"^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềểẾỄỆỈỊỌỎỐỒỔỖỘớờởỡợỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+$"))
+                {
+                    MessageBox.Show("Lỗi: Tên không được chứa ký tự đặc biệt.");
+                    return;
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(tbAddress.Text, @"^[a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềểẾỄỆỈỊỌỎỐỒỔỖỘớờởỡợỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ.,\s]+$"))
+                {
+                    MessageBox.Show("Lỗi: Địa chỉ không được chứa ký tự đặc biệt.");
+                    return;
+                }
+
+                // Kiểm tra mã dự án không chứa ký tự đặc biệt (chỉ cho phép chữ cái, số và khoảng trắng)
+                if (!System.Text.RegularExpressions.Regex.IsMatch(tbMaduan.Text, @"^[a-zA-Z0-9\s]+$"))
+                {
+                    MessageBox.Show("Lỗi: Mã dự án không được chứa ký tự đặc biệt.");
+                    return;
+                }
+
+                // Kiểm tra mã phòng ban không chứa ký tự đặc biệt (chỉ cho phép chữ cái, số và khoảng trắng)
+                if (!System.Text.RegularExpressions.Regex.IsMatch(cbMaphongban.Text, @"^[a-zA-Z0-9\s]+$"))
+                {
+                    MessageBox.Show("Lỗi: Mã phòng ban không được chứa ký tự đặc biệt.");
                     return;
                 }
                 // Kiểm tra tuổi
