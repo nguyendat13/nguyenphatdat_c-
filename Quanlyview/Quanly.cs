@@ -5,11 +5,14 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.IO;
 using System.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Quanlyview
 {
     public partial class Quanly : Form
     {
+        public event EventHandler DangXuat; // Khai báo sự kiện DangXuat
+
         private string strCon = @"Data Source=LAPTOP-QBKMQRNF\SQLEXPRESS01;Initial Catalog=Employee;User ID=sa;Password=1234;Encrypt=False;";
         private SqlConnection sqlCon; // Khai báo SqlConnection
 
@@ -17,8 +20,7 @@ namespace Quanlyview
         public List<Employee> lstEmp = new List<Employee>();
         private BindingSource bs = new BindingSource();
         public bool isThoat = true;
-        public event EventHandler DangXuat;
-
+        private string username;
         private string employeeImagePath = string.Empty; // Store the image path
 
         public Quanly()
@@ -158,7 +160,10 @@ namespace Quanlyview
 
         private void btDangXuat_Click(object sender, EventArgs e)
         {
-            DangXuat?.Invoke(this, EventArgs.Empty);
+            Form1 form1 = new Form1(); // Tạo một instance mới của Form1 (trang đăng nhập)
+            this.Hide(); // Ẩn trang quản lý hiện tại
+            form1.ShowDialog(); // Hiển thị trang đăng nhập dưới dạng hộp thoại (modal)
+            this.Close(); // Đóng trang quản lý khi trang đăng nhập đã đóng
         }
 
         private void Quanly_FormClosed(object sender, FormClosedEventArgs e)
@@ -185,6 +190,12 @@ namespace Quanlyview
                 if (string.IsNullOrWhiteSpace(tbName.Text))
                 {
                     MessageBox.Show("Lỗi: Vui lòng nhập tên nhân viên.");
+                    return;
+                }
+                // Kiểm tra tên không được chứa số
+                if (System.Text.RegularExpressions.Regex.IsMatch(tbName.Text, @"\d"))
+                {
+                    MessageBox.Show("Lỗi: Tên không được chứa số.");
                     return;
                 }
                 if (dateTimePicker1.Value > DateTime.Now.AddYears(-18))
@@ -232,6 +243,12 @@ namespace Quanlyview
                     MessageBox.Show("Lỗi: ID này đã tồn tại. Vui lòng nhập ID khác.");
                     return;
                 }
+                // Kiểm tra tên không được chứa số
+                if (System.Text.RegularExpressions.Regex.IsMatch(tbName.Text, @"\d"))
+                {
+                    MessageBox.Show("Lỗi: Tên không được chứa số.");
+                    return;
+                }
                 // Kiểm tra tuổi
                 if (dateTimePicker1.Value > DateTime.Now.AddYears(-18))
                 {
@@ -260,16 +277,33 @@ namespace Quanlyview
 
         private void btDelete_Click(object sender, EventArgs e)
         {
-            if (dgvEmployee.CurrentRow == null) return;
+            if (dgvEmployee.CurrentRow == null)
+            {
+                MessageBox.Show("Vui lòng chọn một nhân viên để xóa.");
+                return;
+            }
 
             int idx = dgvEmployee.CurrentRow.Index;
+
+            // Kiểm tra lại chỉ số hợp lệ trong danh sách
+            if (idx < 0 || idx >= lstEmp.Count)
+            {
+                MessageBox.Show("Không thể xóa nhân viên. Dữ liệu không đồng bộ.");
+                return;
+            }
+
+            // Lấy ID của nhân viên cần xóa
             var empId = lstEmp[idx].Id;
 
-
+            // Xóa khỏi danh sách và cơ sở dữ liệu
             lstEmp.RemoveAt(idx);
             DeleteEmployee(empId); // Gọi hàm xóa khỏi cơ sở dữ liệu
+
+            // Cập nhật lại hiển thị và xóa các ô nhập liệu
             RefreshBindings();
+            ClearInputFields();
         }
+
 
         //private void dgvEmployee_RowEnter(object sender, DataGridViewCellEventArgs e)
         //{
@@ -382,7 +416,7 @@ namespace Quanlyview
 
         private void lTaiKhoan_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Taikhoan taikhoan = new Taikhoan();
+            Taikhoan taikhoan = new Taikhoan(username); // Truyền username hiện tại
             taikhoan.Show();
             this.Hide();
         }
@@ -410,7 +444,7 @@ namespace Quanlyview
             }
             else
             {
-                dateTimePicker1.Value = DateTime.Now; // Default to current date
+                dateTimePicker1.Value = DateTime.Now.AddYears(-18); // Đặt ngày mặc định lớn hơn 18 tuổi
             }
 
 

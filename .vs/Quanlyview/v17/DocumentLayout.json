@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "D:\\c#\\Quanlyview\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|d:\\c#\\quanlyview\\quanlyview\\quanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|solutionrelative:quanlyview\\quanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|d:\\c#\\quanlyview\\quanlyview\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|solutionrelative:quanlyview\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|d:\\c#\\quanlyview\\quanlyview\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|solutionrelative:quanlyview\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|d:\\c#\\quanlyview\\quanlyview\\quanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|solutionrelative:quanlyview\\quanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|d:\\c#\\quanlyview\\quanlyview\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|solutionrelative:quanlyview\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|d:\\c#\\quanlyview\\quanlyview\\quanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|solutionrelative:quanlyview\\quanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|d:\\c#\\quanlyview\\quanlyview\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C40DA52-AF04-48E1-81DA-CDBF3163C08F}|Quanlyview\\Quanlyview.csproj|solutionrelative:quanlyview\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,53 +46,53 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\c#\\Quanlyview\\Quanlyview\\Program.cs",
               "RelativeDocumentMoniker": "Quanlyview\\Program.cs",
               "ToolTip": "D:\\c#\\Quanlyview\\Quanlyview\\Program.cs",
               "RelativeToolTip": "Quanlyview\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-31T17:49:35.41Z",
+              "WhenOpened": "2024-11-02T00:49:19.653Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "Quanly.cs",
+              "DocumentMoniker": "D:\\c#\\Quanlyview\\Quanlyview\\Quanly.cs",
+              "RelativeDocumentMoniker": "Quanlyview\\Quanly.cs",
+              "ToolTip": "D:\\c#\\Quanlyview\\Quanlyview\\Quanly.cs",
+              "RelativeToolTip": "Quanlyview\\Quanly.cs",
+              "ViewState": "AgIAAFcBAAAAAAAAAADwvxkBAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-01T14:25:31.919Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Quanly.cs [Design]",
               "DocumentMoniker": "D:\\c#\\Quanlyview\\Quanlyview\\Quanly.cs",
               "RelativeDocumentMoniker": "Quanlyview\\Quanly.cs",
               "ToolTip": "D:\\c#\\Quanlyview\\Quanlyview\\Quanly.cs [Design]",
               "RelativeToolTip": "Quanlyview\\Quanly.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-31T16:59:52.097Z",
+              "WhenOpened": "2024-11-01T15:10:00.337Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Form1.cs",
               "DocumentMoniker": "D:\\c#\\Quanlyview\\Quanlyview\\Form1.cs",
               "RelativeDocumentMoniker": "Quanlyview\\Form1.cs",
               "ToolTip": "D:\\c#\\Quanlyview\\Quanlyview\\Form1.cs",
               "RelativeToolTip": "Quanlyview\\Form1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-31T16:15:01.773Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Quanly.cs",
-              "DocumentMoniker": "D:\\c#\\Quanlyview\\Quanlyview\\Quanly.cs",
-              "RelativeDocumentMoniker": "Quanlyview\\Quanly.cs",
-              "ToolTip": "D:\\c#\\Quanlyview\\Quanlyview\\Quanly.cs",
-              "RelativeToolTip": "Quanlyview\\Quanly.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAA9wBsAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-25T09:02:55.538Z",
+              "WhenOpened": "2024-11-01T14:57:05.552Z",
               "EditorCaption": ""
             }
           ]

@@ -5,11 +5,11 @@ namespace Quanlyview
 {
     public partial class Form1 : Form
     {
-        string tentaikhoan = "admin";
-        string matkhau = "123";
+        //string tentaikhoan = "admin";
+        //string matkhau = "123";
 
-        string strCon = @"Data Source=LAPTOP-QBKMQRNF\SQLEXPRESS01;Initial Catalog=Employee;User ID=sa;Trust Server Certificate=True";
-        SqlConnection sqlCon = null;
+        private string connectionString = @"Data Source=LAPTOP-QBKMQRNF\SQLEXPRESS01;Initial Catalog=Employee;User ID=sa;Password=1234;TrustServerCertificate=True";
+
         public Form1()
         {
             InitializeComponent();
@@ -36,10 +36,12 @@ namespace Quanlyview
 
         private void F_DangXuat(object? sender, EventArgs e)
         {
-            (sender as Quanly).isThoat = false;
-            (sender as Quanly).Close();
-            this.Show();
-
+            var quanlyForm = sender as Quanly;
+            if (quanlyForm != null)
+            {
+                quanlyForm.Close(); // Đóng form Quanly
+            }
+            this.Show(); // Hiển thị lại Form1 (màn hình đăng nhập)
         }
 
         private void tbMatKhau_TextChanged(object sender, EventArgs e)
@@ -58,12 +60,36 @@ namespace Quanlyview
         }
         bool KiemTraDangNhap(string tentaikhoan, string matkhau)
         {
-            if (tentaikhoan == this.tentaikhoan && matkhau == this.matkhau)
+            using (SqlConnection sqlCon = new SqlConnection(connectionString))
             {
-                return true;
+                try
+                {
+                    sqlCon.Open();
+                    string query = "SELECT COUNT(1) FROM [User] WHERE Username = @Username AND Password = @Password";
+                    using (SqlCommand cmd = new SqlCommand(query, sqlCon))
+                    {
+                        cmd.Parameters.AddWithValue("@Username", tentaikhoan);
+                        cmd.Parameters.AddWithValue("@Password", matkhau);
+
+                        int count = Convert.ToInt32(cmd.ExecuteScalar());
+                        return count == 1;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Lỗi khi kết nối cơ sở dữ liệu: {ex.Message}");
+                    return false;
+                }
             }
-            return false;
         }
+        //bool KiemTraDangNhap(string tentaikhoan, string matkhau)
+        //{
+        //    if (tentaikhoan == this.tentaikhoan && matkhau == this.matkhau)
+        //    {
+        //        return true;
+        //    }
+        //    return false;
+        //}
         private void btThoat_Click(object sender, EventArgs e)
         {
             Application.Exit();

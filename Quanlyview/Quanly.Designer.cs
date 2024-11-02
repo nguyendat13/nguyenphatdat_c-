@@ -98,7 +98,7 @@ namespace Quanlyview
             dgvEmployee.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvEmployee.Location = new Point(212, 295);
             dgvEmployee.Name = "dgvEmployee";
-            dgvEmployee.Size = new Size(685, 120);
+            dgvEmployee.Size = new Size(685, 142);
             dgvEmployee.TabIndex = 2;
             dgvEmployee.CellClick += dgvEmployee_CellClick;
             // 
@@ -433,7 +433,7 @@ namespace Quanlyview
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.RosyBrown;
-            ClientSize = new Size(920, 427);
+            ClientSize = new Size(920, 449);
             Controls.Add(groupBox5);
             Controls.Add(groupBox4);
             Controls.Add(groupBox3);

@@ -32,9 +32,10 @@
             label2 = new Label();
             label3 = new Label();
             linkLabel1 = new LinkLabel();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            tbPassword = new TextBox();
             btQuayVe = new Button();
+            lblUsername = new TextBox();
+            lblRole = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -70,26 +71,19 @@
             // linkLabel1
             // 
             linkLabel1.AutoSize = true;
-            linkLabel1.Location = new Point(133, 155);
+            linkLabel1.Location = new Point(12, 172);
             linkLabel1.Name = "linkLabel1";
             linkLabel1.Size = new Size(78, 15);
             linkLabel1.TabIndex = 3;
             linkLabel1.TabStop = true;
             linkLabel1.Text = "Đổi mật khẩu";
             // 
-            // textBox1
+            // tbPassword
             // 
-            textBox1.Location = new Point(133, 68);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(204, 23);
-            textBox1.TabIndex = 4;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(133, 116);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(204, 23);
-            textBox2.TabIndex = 5;
+            tbPassword.Location = new Point(133, 116);
+            tbPassword.Name = "tbPassword";
+            tbPassword.Size = new Size(204, 23);
+            tbPassword.TabIndex = 5;
             // 
             // btQuayVe
             // 
@@ -101,14 +95,29 @@
             btQuayVe.UseVisualStyleBackColor = true;
             btQuayVe.Click += btQuayVe_Click;
             // 
+            // lblUsername
+            // 
+            lblUsername.Location = new Point(133, 68);
+            lblUsername.Name = "lblUsername";
+            lblUsername.Size = new Size(204, 23);
+            lblUsername.TabIndex = 7;
+            // 
+            // lblRole
+            // 
+            lblRole.Location = new Point(133, 164);
+            lblRole.Name = "lblRole";
+            lblRole.Size = new Size(204, 23);
+            lblRole.TabIndex = 8;
+            // 
             // Taikhoan
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(439, 232);
+            Controls.Add(lblRole);
+            Controls.Add(lblUsername);
             Controls.Add(btQuayVe);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(tbPassword);
             Controls.Add(linkLabel1);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -116,6 +125,7 @@
             Name = "Taikhoan";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Taikhoan";
+            Load += Taikhoan_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -126,8 +136,9 @@
         private Label label2;
         private Label label3;
         private LinkLabel linkLabel1;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox tbPassword;
         private Button btQuayVe;
+        private TextBox lblUsername;
+        private TextBox lblRole;
     }
 }
